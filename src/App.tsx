@@ -30,7 +30,7 @@ function App() {
     }
   };
 
-  const confetiRef = useRef({});
+  const confetiRef = useRef<HTMLDivElement | null>(null);
 
   const getAge = () => {
     let currentDate = new Date();
@@ -46,8 +46,11 @@ function App() {
   };
 
   useEffect(() => {
-    setHeight(confetiRef.current.clientHeight);
-    setWidth(confetiRef.current.clientWidth);
+    if (confetiRef.current) {
+      const { clientHeight, clientWidth } = confetiRef.current;
+      setHeight(clientHeight);
+      setWidth(clientWidth);
+    }
 
     getAge();
   }, []);
@@ -61,7 +64,7 @@ function App() {
             🎈✨🎉
           </button>
 
-          <Confetti numberOfPieces={7} width={width} height={height} />
+          <Confetti numberOfPieces={7} width={width!} height={height!} />
         </div>
       ) : (
         <div className="confetti-wrap">
@@ -94,7 +97,7 @@ function App() {
 
           <h3>Disfruta Los {age} Bro</h3>
 
-          <Confetti numberOfPieces={150} width={width} height={height} />
+          <Confetti numberOfPieces={150} width={width!} height={height!} />
           <div>
             <a href="https://github.com/treee97/rupucu" target="_blank">
               <VscGithub size={48} />
