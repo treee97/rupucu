@@ -94,7 +94,7 @@ function App() {
 
           <Confetti numberOfPieces={150} width={width} height={height} />
           <div>
-            <a href="https://github.com/treee97" target="_blank">
+            <a href="https://github.com/treee97/rupucu" target="_blank">
               <VscGithub size={48} />
             </a>
           </div>
