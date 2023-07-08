@@ -14,17 +14,19 @@ function App() {
   const [width, setWidth] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const audioRef = useRef();
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const handlePlay = () => {
     const audio = audioRef.current;
 
-    if (!isPlaying) {
-      audio.play();
-      setIsPlaying(true);
-    } else {
-      audio.pause();
-      setIsPlaying(false);
+    if (audio instanceof HTMLAudioElement) {
+      if (!isPlaying) {
+        audio.play();
+        setIsPlaying(true);
+      } else {
+        audio.pause();
+        setIsPlaying(false);
+      }
     }
   };
 
